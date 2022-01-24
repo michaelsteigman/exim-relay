@@ -2,12 +2,13 @@ FROM docker.io/alpine:3.15.0
 
 RUN apk --no-cache add exim tini && \
     mkdir /var/spool/exim && \
-    chmod 777 /var/spool/exim && \
+    chgrp -R 0 /var/spool/exim && \
+    chmod -R g=u /var/spool/exim && \
     ln -sf /dev/stdout /var/log/exim/mainlog && \
     ln -sf /dev/stderr /var/log/exim/panic && \
     ln -sf /dev/stderr /var/log/exim/reject && \
-    chmod 0755 /usr/sbin/exim
-
+    chmod 0775 /usr/sbin/exim
+    
 COPY exim.conf /etc/exim/exim.conf
 
 USER exim
