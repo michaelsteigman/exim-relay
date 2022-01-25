@@ -26,4 +26,4 @@ ENV LOCAL_DOMAINS=@ \
     SMTP_USERNAME=
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["pwd"]
+CMD ["exim", "-bdf", "-q15m"]
