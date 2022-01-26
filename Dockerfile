@@ -6,8 +6,7 @@ RUN apk --no-cache add exim tini && \
     chmod -R g=u /var/spool/exim && \
     ln -sf /dev/stdout /var/log/exim/mainlog && \
     ln -sf /dev/stderr /var/log/exim/panic && \
-    ln -sf /dev/stderr /var/log/exim/reject && \
-    chmod 0775 /usr/sbin/exim
+    ln -sf /dev/stderr /var/log/exim/reject 
     
 COPY exim.conf /etc/exim/exim.conf
 
