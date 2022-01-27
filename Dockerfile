@@ -1,6 +1,6 @@
 FROM docker.io/alpine:3.15.0
 
-RUN apk --no-cache add exim tini && \
+RUN apk --no-cache add exim tini strace && \
     mkdir /var/spool/exim && \
     chgrp -R 0 /var/spool/exim && \
     chmod -R g=u /var/spool/exim && \
